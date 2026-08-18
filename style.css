@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* FIX: prevents overflow */
+}
+
+body {
+  min-height: 100vh;
+  background-color: lightblue;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* HEADER + NAV FIX */
+header {
+  background-color: black;
+  color: rgb(240, 235, 235);
+  padding: 50px 60px;
+  display: flex;              /* FIX: makes logo and nav sit side by side */
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+header h2 {
+  font-size: 20px;
+}
+
+nav ul {
+  list-style: none;           /* remove bullets */
+  display: flex;              /* put links in a row */
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+nav a:hover {
+  color: #007bff;
+}
+    
+
+/* HERO SECTION */
+.hero {
+  padding: 60px 50px;         /* FIX: use padding instead of moving each p */
+}
+
+.hero h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.hero p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden; /* hides text when it goes out */
+  background: #111;
+  padding: 5px 0;
+  margin: 20px 0;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+}
+
+.marquee-content p {
+  display: inline-block;
+  margin: 0 50px; /* space between sentences */
+  color: white;
+  font-size: 18px;
+}
+
+/* HIDE THE REAL CHECKBOX */
+.popup-toggle { display: none; }
+
+/* BUTTON STYLE */
+.contact-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  font-size: 19px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.3s;
+  margin: 20px 0 0 50px;      /* FIX: use margin instead of left/top */
+}
+.contact-btn:hover {
+  background: #05be4c;
+  transform: scale(1.05);
+}
+
+.cv-button {
+  display: inline-block;
+  padding: 14px 25px;
+  background: #007bff; /* blue */
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cv-button:hover {
+  background: #05be4c;
+  transform: translateY(-2px);
+}
+.contact-form-section {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.contact-form-section {
+  position: relative;
+  bottom: 200px;
+}
+
+.contact-form-section h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #222;
+  
+}
+
+.contact-form-section p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+  color: #333;
+}
+ 
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  transition: 0.3s;
+  box-sizing: border-box; /* important */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.submit-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.submit-btn:hover {
+  background: #05be4c;
+  transform: scale(1.02);
+}
+/* POPUP */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.popup-toggle:checked ~ .popup {
+  display: block;
+  animation: fadeIn 0.3s;
+}
+.popup-content {
+  background: white;
+  margin: 10% auto;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 150px;                /* FIXED position */
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+.close-btn:hover { color: red; }
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+
+
+/* ABOUT SECTION */
+.about-section {
+  padding: 60px 50px;
+  overflow: auto;
+}
+.about-section h2 { margin-bottom: 15px; }
+.about-section p { margin-bottom: 10px; line-height: 1.6; }
+
+.right-image {
+  float: right;
+  width: 300px;               /* FIX: 500px was too big for mobile */
+  max-width: 100%;
+  height: auto;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  border-radius: 50%;         /* makes it circle */
+  border: 3px solid #007bff;
+}
+
+/* PORTFOLIO SECTION */
+#portfolio {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+#portfolio h2 {
+  font-size: 30px;
+  margin-bottom: 14px;
+  color: #222;
+}
+
+/* THE GRID */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* EACH CARD */
+.project-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 20px 20px rgba(0,0,0,0.1); /* FIXED shadow */
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover { transform: translateY(-8px); }
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-info {
+  padding: 18px;
+  text-align: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-info h3 {
+  margin: 0 0 10px 0;         /* FIX: removed duplicate left:25px */
+  color: #007bff;
+  font-size: 18px;
+  word-wrap: break-word;      /* FIX: stops text cutting */
+}
+
+.project-info p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+.project-info a {
+  text-decoration: none;
+  background: #007bff;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  align-self: flex-start;
+  margin-top: auto;
+}
+.project-info a:hover { background: #0056b3; } 
